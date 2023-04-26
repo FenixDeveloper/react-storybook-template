@@ -17,20 +17,44 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint": "eslint . --ext .js,.jsx .",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier . --write"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "airbnb",
+      "airbnb/hooks",
+      "prettier"
     ],
+    "rules": {
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "react/react-in-jsx-scope": "off",
+      "import/prefer-default-export": "off",
+      "react/function-component-definition": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/no-unescaped-entities": "off"
+    },
     "overrides": [
       {
         "files": [
-          "**/*.stories.*"
+          "**/*.stories.*",
+          "src/stories/**/*"
         ],
         "rules": {
-          "import/no-anonymous-default-export": "off"
+          "import/no-anonymous-default-export": "off",
+          "import/no-extraneous-dependencies": "off"
         }
       }
     ]
@@ -57,6 +81,9 @@
     "@storybook/react-webpack5": "7.0.7",
     "@storybook/testing-library": "0.0.14-next.2",
     "babel-plugin-named-exports-order": "0.0.2",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.8",
     "prop-types": "15.8.1",
     "storybook": "7.0.7",
     "webpack": "5.81.0"
